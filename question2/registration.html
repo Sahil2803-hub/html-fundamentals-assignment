@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Registration Form</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 2.2em;
+        }
+        
+        fieldset {
+            border: 2px solid #3498db;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            background: #f8f9fa;
+        }
+        
+        legend {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #2c3e50;
+            padding: 0 15px;
+            background: white;
+            border-radius: 5px;
+            border: 1px solid #3498db;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        input[type="number"],
+        input[type="file"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+        }
+        
+        .radio-group,
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .radio-option,
+        .checkbox-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        input[type="radio"],
+        input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+        }
+        
+        .range-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        input[type="range"] {
+            flex: 1;
+        }
+        
+        .range-value {
+            font-weight: bold;
+            color: #3498db;
+            min-width: 30px;
+        }
+        
+        .required::after {
+            content: " *";
+            color: #e74c3c;
+        }
+        
+        .buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        
+        button {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        button[type="submit"] {
+            background: #3498db;
+            color: white;
+        }
+        
+        button[type="submit"]:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        button[type="reset"] {
+            background: #95a5a6;
+            color: white;
+        }
+        
+        button[type="reset"]:hover {
+            background: #7f8c8d;
+            transform: translateY(-2px);
+        }
+        
+        .file-hint {
+            font-size: 0.9em;
+            color: #7f8c8d;
+            margin-top: 5px;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .radio-group,
+            .checkbox-group {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Course Registration Form</h1>
+        
+        <form method="POST" action="/submit-registration" enctype="multipart/form-data">
+            
+            <!-- Personal Information Section -->
+            <fieldset>
+                <legend>Personal Information</legend>
+                
+                <div class="form-group">
+                    <label for="fullName" class="required">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" required 
+                           placeholder="Enter your full name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email" class="required">Email Address</label>
+                    <input type="email" id="email" name="email" required 
+                           placeholder="your.email@example.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" 
+                           placeholder="+1 (555) 123-4567">
+                </div>
+                
+                <div class="form-group">
+                    <label for="dob">Date of Birth</label>
+                    <input type="date" id="dob" name="dob" 
+                           min="1900-01-01" max="2010-12-31">
+                </div>
+                
+                <div class="form-group">
+                    <label for="profilePicture">Profile Picture</label>
+                    <input type="file" id="profilePicture" name="profilePicture" 
+                           accept="image/*">
+                    <div class="file-hint">Accepted formats: JPG, PNG, GIF, WebP</div>
+                </div>
+            </fieldset>
+            
+            <!-- Academic Background Section -->
+            <fieldset>
+                <legend>Academic Background</legend>
+                
+                <div class="form-group">
+                    <label for="educationLevel">Current Education Level</label>
+                    <select id="educationLevel" name="educationLevel">
+                        <option value="">Select your education level</option>
+                        <option value="high-school">High School</option>
+                        <option value="bachelor">Bachelor's Degree</option>
+                        <option value="master">Master's Degree</option>
+                        <option value="phd">PhD</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="fieldOfStudy">Field of Study</label>
+                    <input type="text" id="fieldOfStudy" name="fieldOfStudy" 
+                           placeholder="e.g., Computer Science, Business, etc.">
+                </div>
+                
+                <div class="form-group">
+                    <label for="programmingExperience">Years of Experience in Programming</label>
+                    <input type="number" id="programmingExperience" name="programmingExperience" 
+                           min="0" max="20" placeholder="0">
+                </div>
+            </fieldset>
+            
+            <!-- Course Preferences Section -->
+            <fieldset>
+                <legend>Course Preferences</legend>
+                
+                <div class="form-group">
+                    <label>Preferred Learning Mode</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="online" name="learningMode" value="online">
+                            <label for="online">Online</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="offline" name="learningMode" value="offline">
+                            <label for="offline">Offline</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="hybrid" name="learningMode" value="hybrid">
+                            <label for="hybrid">Hybrid</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Course Categories</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="webdev" name="courseCategories" value="webdev">
+                            <label for="webdev">Web Development</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="mobile" name="courseCategories" value="mobile">
+                            <label for="mobile">Mobile App Development</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="datascience" name="courseCategories" value="datascience">
+                            <label for="datascience">Data Science</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="aiml" name="courseCategories" value="aiml">
+                            <label for="aiml">AI/ML</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="devops" name="courseCategories" value="devops">
+                            <label for="devops">DevOps</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Preferred Schedule</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="weekdays" name="schedule" value="weekdays">
+                            <label for="weekdays">Weekdays</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="weekends" name="schedule" value="weekends">
+                            <label for="weekends">Weekends</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="flexible" name="schedule" value="flexible">
+                            <label for="flexible">Flexible</label>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            
+            <!-- Additional Information Section -->
+            <fieldset>
+                <legend>Additional Information</legend>
+                
+                <div class="form-group">
+                    <label for="experienceLevel">Programming Experience Level (1-10)</label>
+                    <div class="range-container">
+                        <span>1</span>
+                        <input type="range" id="experienceLevel" name="experienceLevel" 
+                               min="1" max="10" value="5">
+                        <span>10</span>
+                        <span class="range-value" id="rangeValue">5</span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="comments">Special Requirements or Comments</label>
+                    <textarea id="comments" name="comments" rows="4" 
+                              placeholder="Any special requirements, learning preferences, or additional comments..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Preferred Contact Method</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="contactEmail" name="contactMethod" value="email">
+                            <label for="contactEmail">Email</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="contactPhone" name="contactMethod" value="phone">
+                            <label for="contactPhone">Phone</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="contactSMS" name="contactMethod" value="sms">
+                            <label for="contactSMS">SMS</label>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            
+            <!-- Terms and Conditions Section -->
+            <fieldset>
+                <legend>Terms and Conditions</legend>
+                
+                <div class="form-group">
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <label for="terms" class="required">I agree to the Terms and Conditions</label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="newsletter" name="newsletter">
+                        <label for="newsletter">I want to receive newsletters and updates</label>
+                    </div>
+                </div>
+            </fieldset>
+            
+            <!-- Form Buttons -->
+            <div class="buttons">
+                <button type="submit">Submit Registration</button>
+                <button type="reset">Reset Form</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Update range value display
+        const rangeInput = document.getElementById('experienceLevel');
+        const rangeValue = document.getElementById('rangeValue');
+        
+        rangeInput.addEventListener('input', function() {
+            rangeValue.textContent = this.value;
+        });
+        
+        // Add basic form validation feedback
+        const form = document.querySelector('form');
+        form.addEventListener('submit', function(event) {
+            const requiredFields = form.querySelectorAll('[required]');
+            let valid = true;
+            
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    valid = false;
+                    field.style.borderColor = '#e74c3c';
+                } else {
+                    field.style.borderColor = '#ddd';
+                }
+            });
+            
+            if (!valid) {
+                event.preventDefault();
+                alert('Please fill in all required fields.');
+            }
+        });
+    </script>
+</body>
+</html>
